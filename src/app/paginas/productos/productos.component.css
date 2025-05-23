@@ -1,0 +1,51 @@
+body{
+    background-color: black;
+    color: beige;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.card{
+    width: 18rem;
+    background-color: rgb(242, 220, 245);
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card img{
+    object-fit: cover;
+}
+
+.card .btn{
+    width: 200p;
+    height: 100%;
+    background-color: rgb(187, 127, 243);
+    color: black;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.card .btn:hover{
+    background-color:rgb(216, 133, 255);
+}
+
+@media(max-width:600px) {
+    .card-body {
+        flex-direction: column;
+        align-items: center;
+    }
+}
