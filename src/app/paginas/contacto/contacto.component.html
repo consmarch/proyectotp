@@ -1,13 +1,47 @@
-<!--<form>
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+<div id="multiImageCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
 
-    <button [disabled]="!usuario.nombre">Enviar</button>
-</form> -->
+    <!-- Primer slide -->
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <img src="assets/gilera125.png" class="d-block w-100" alt="Imagen 1">
+          </div>
+          <div class="col-4">
+            <img src="assets/river.webp" class="d-block w-100" alt="Imagen 2">
+          </div>
+          <div class="col-4">
+            <img src="https://via.placeholder.com/300x200?text=Imagen+3" class="d-block w-100" alt="Imagen 3">
+          </div>
+        </div>
+      </div>
+    </div>
 
-<form [formGroup]="miFormulario">
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email">
+    <!-- Segundo slide -->
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <img src="assets/5.png" class="d-block w-100" alt="Imagen 4">
+          </div>
+          <div class="col-4">
+            <img src="assets/gilera125.png" class="d-block w-100" alt="Imagen 5">
+          </div>
+          <div class="col-4">
+            <img src="assets/cet30.png" class="d-block w-100" alt="Imagen 6">
+          </div>
+        </div>
+      </div>
+    </div>
 
-<button [disabled]="miFormulario.invalid">Enviar</button>
-</form>
+  </div>
+
+  <!-- Controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>

@@ -1,3 +1,4 @@
+
 export interface Producto{
     id:number;
     nombre:string;
@@ -5,4 +6,5 @@ export interface Producto{
     precio:number;
     disponibilidad:boolean;
     cantidad?:number;
+    img: string;
 }
