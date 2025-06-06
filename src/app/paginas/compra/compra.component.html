@@ -1,0 +1,75 @@
+<h2 class="text-center nb-4"> Formulario de Compra </h2>
+<form [formGroup]="formularioCompra" (ngSubmit)="finalizarCompra()" class="mx-auto" style="max-width: 600px;"></form>
+
+<!-- campos del formulario-->
+<div class="row g-3 mb-3">
+    <div class="col-md-6">
+        <label for="nombre" class="form-label fw-samibold"> Nombre <span class="text-danger">°</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input id="nombre" formControlName="nombre" class="form-control" placeholder="Tu Nombre Completo" />
+        </div>
+        <div *ngIf="formularioCompra.get('nombre')?.touched && formularioCompra.get('nombre')?invalid"
+            class="form-text text-danger">
+            El nombre es obligatorio
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="telefono" class="form-label fw-samibold"> Telefono <span class="text-danger">°</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+            <input id="telefono" formControlName="telefono" class="form-control" placeholder="ej: +5429951777" />
+        </div>
+        <div *ngIf="formularioCompra.get('telefono')?.touched && formularioCompra.get('telefono')?invalid"
+            class="form-text text-danger">
+            El Telefono es obligatorio
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="correo" class="form-label fw-samibold"> Correo <span class="text-danger">°</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+            <input id="correo" formControlName="correo" type="email" class="form-control" placeholder="ej: ejemplo@gmail.com" />
+        </div>
+        <div *ngIf="formularioCompra.get('correo')?.touched && formularioCompra.get('correo')?invalid"
+            class="form-text text-danger">
+            Ingrese un correo valido
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="direccion" class="form-label fw-samibold"> Direccion <span class="text-danger">°</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+            <input id="direccion" formControlName="correo"  class="form-control" 
+            placeholder="Calle, altura, piso. depto" />
+        </div>
+        <div *ngIf="formularioCompra.get('direccion')?.touched && formularioCompra.get('direccion')?invalid"
+            class="form-text text-danger">
+            La dirreccion es obligatoria
+        </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+        <div class="col-md-4">
+            <label for="ciudad" class="form-label fw-samibold"> Ciudad <span class="text-danger">°</span></label>
+                <input id="ciudad" formControlName="ciudad" class="form-control" placeholder="Ej: Cipolletti" />
+            <div *ngIf="formularioCompra.get('ciudad')?.touched && formularioCompra.get('ciudad')?invalid"
+                class="form-text text-danger">
+                La ciudad es obligatorio
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="provincia" class="form-label fw-samibold"> provincia <span class="text-danger">°</span></label>
+                <input id="provincia" formControlName="provincia" class="form-control" placeholder="Ej: Rio Negro" />
+            <div *ngIf="formularioCompra.get('provincia')?.touched && formularioCompra.get('provincia')?invalid"
+                class="form-text text-danger">
+                La provincia es obligatorio
+            </div>
+        </div>
+    </div>
+
+
+</div>

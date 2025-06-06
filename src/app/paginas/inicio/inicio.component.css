@@ -7,13 +7,20 @@ h1, p {
         1px 1px 0 black;
 }
 
+.cuadri {
+    margin: 85px;
+}
 
-
-mat-grid-tile {
-    background: rgb(88, 8, 19);
+.collage{
+    height: 100%;
 }
 
 
-.cuadri {
-    margin: 80px;
+.boton{
+    color: rgb(214, 125, 255);
+    text-shadow:
+        -2px -2px 0 black,
+        2px -2px 0 black,
+        -2px 2px 0 black,
+        2px 2px 0 black;
 }

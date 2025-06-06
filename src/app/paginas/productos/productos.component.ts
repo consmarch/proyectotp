@@ -40,17 +40,12 @@ export class ProductosComponent {
   ]
 
 
-  Productos: Producto[] = [
+ // constructor(private carritoService: CarritoService){}
+  //*metodo para agregar producto al carrito}
 
-  ]
-
-  constructor(private carritoService: CarritoService){}
-  //*metodo para agregar producto al carrito*//}
-
-  agregar(producto: Producto){
-    this.carritoService.agregarAlCarrito(producto)
-    alert('Producto agregado al carrito')
-    //*muestra el mensaje*//
-  }
+  //agregar(producto: Producto){
+    //this.carritoService.agregarAlCarrito(producto)
+    //alert('Producto agregado al carrito')
+    //*muestra el mensaje*// }
 
 }
