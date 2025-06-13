@@ -18,3 +18,20 @@ button{
     background-color: rgb(150, 12, 143);
     color: rgb(255, 255, 255);
 }
+
+.carrito-img{
+    width: 50px;
+}
+
+.btn-outline-primary{
+
+    background-color: rgb(255, 73, 164);
+    color: black;
+    border: none;
+    transition: background 0.3s ease-in-out;
+    margin-left: 15px;
+}
+
+.btn-outline-primary:hover{
+    background-color: rgb(255, 133, 227);
+}

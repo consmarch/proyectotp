@@ -17,18 +17,18 @@ body{
 /*Estilos para la tarjeta*/
 .card{
     width: 18rem;
-    background-color: #333;
+    background-color: #b34c99;
     color: white;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0px 4px 8px rgba(255, 255,255,255, 0.1);
+    box-shadow: 0px 4px 8px rgba(255, 117, 237, 0.5);
 }
 
 /*efecto hover en la tarjeta*/
 .card:hover{
     transform: scale(1.05);
-    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 8px 16px rgba(255, 117, 237, 0.5);
 }
 
 /*imagen dentro de la tarjeta*/
@@ -40,13 +40,22 @@ body{
 
 /*Boton estilizado*/
 .card .btn{
-    background-color: yellow;
+    background-color: rgb(145, 25, 85);
     color: black;
     border: none;
     transition: background 0.3s ease-in-out;
+    
 }
 .card .btn:hover{
-    background-color: yellow;
+    background-color: rgb(255, 121, 226);
+}
+
+h2,p{
+margin: 5px;
+}
+
+.texto{
+    color: rgb(146, 27, 150);
 }
 
 /*Resposividad para pantallas chicas*/

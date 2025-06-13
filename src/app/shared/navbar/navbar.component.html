@@ -29,14 +29,14 @@
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
       </form>
       <li>
-        <a routerLink="/carrito">
-          <i class="bi bi-cart"></i>
-          <span *ngIf="cantidadProductos > 0">{{cantidadProductos}}</span>
-        </a>
-      </li>
+          <a class="navbar-brand" routerLink="/carrito"><img src="img/carrito.png" alt="" class="carrito-img"></a>
+    <!-- <span *ngIf="cantidadProductos > 0">
+              {{cantidadProductos}}
+            </span>-->
+        </li>
 
     </div>
   </div>
