@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-inicio',
@@ -59,6 +60,62 @@ export class InicioComponent {
       nombre: 'Intesamente'
     }
   ]
+
+@ViewChild('track') trackRef!: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit() {
+    this.enableDragScroll(this.trackRef.nativeElement);
+  }
+
+  scrollLeft(): void {
+    this.trackRef.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  scrollRight(): void {
+    this.trackRef.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  enableDragScroll(container: HTMLElement): void {
+    let isDown = false;
+    let startX: number = 0;
+    let scrollLeft: number = 0;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      container.scrollLeft = scrollLeft - walk;
+    });
+
+    container.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].pageX;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('touchmove', (e) => {
+      const x = e.touches[0].pageX;
+      const walk = (x - startX) * -1;
+      container.scrollLeft = scrollLeft + walk;
+    });
+  }
 
 
 }

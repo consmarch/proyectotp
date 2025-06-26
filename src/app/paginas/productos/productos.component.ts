@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Producto } from '../../modelos/producto.model';
 import { CarritoService } from '../../servicios/carrito.service';
 import { CommonModule } from '@angular/common';
@@ -116,6 +116,103 @@ export class ProductosComponent {
   agregar(producto: Producto) {
     this.carritoService.agregarAlCarrito(producto)
     alert('Producto agregado al carrito') //Muestra el mensaje
+  }
+
+  /*Cards tipos*/
+  tipos = [
+    {
+      id: 1,
+      img: 'img/tipo1.png',
+      nombre: 'Cajitas Milk'
+    },
+    {
+      id: 2,
+      img: 'img/tipo2.png',
+      nombre: 'Banderines'
+    },
+    {
+      id: 3,
+      img: 'img/tipo3.png',
+      nombre: 'Toppers'
+    },
+    {
+      id: 4,
+      img: 'img/tipo4.png',
+      nombre: 'Letras 3D'
+    },
+    {
+      id: 5,
+      img: 'img/tipo5.png',
+      nombre: 'Imanes'
+    },
+    {
+      id: 6,
+      img: 'img/tipo6.png',
+      nombre: 'Libritos Colorear'
+    },
+    {
+      id: 7,
+      img: 'img/tipo7.png',
+      nombre: 'Alcancias'
+    },
+  ]
+
+
+
+  @ViewChild('track') trackRef!: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit() {
+    this.enableDragScroll(this.trackRef.nativeElement);
+  }
+
+  scrollLeft(): void {
+    this.trackRef.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  scrollRight(): void {
+    this.trackRef.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
+  enableDragScroll(container: HTMLElement): void {
+    let isDown = false;
+    let startX: number = 0;
+    let scrollLeft: number = 0;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      container.scrollLeft = scrollLeft - walk;
+    });
+
+    container.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].pageX;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('touchmove', (e) => {
+      const x = e.touches[0].pageX;
+      const walk = (x - startX) * -1;
+      container.scrollLeft = scrollLeft + walk;
+    });
   }
 
 }

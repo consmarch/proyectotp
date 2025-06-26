@@ -64,3 +64,72 @@ margin: 5px;
         align-items: center; /*centra en pantallas chicas*/
     }
 }
+
+
+
+/*estilos card tipos*/
+.slider-container {
+margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.card-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  padding: 10px;
+  scrollbar-width: none;
+}
+
+.card-track::-webkit-scrollbar {
+  display: none;
+}
+
+.card2 {
+  flex: 0 0 auto;
+  width: 240px;
+  background: white;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card2 img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+.card2 h3 {
+  margin: 0;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 6px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.nav.prev { left: 0; }
+.nav.next { right: 0; }
+
+
+.card-track:active {
+  cursor: grabbing;
+}
+.card-track {
+  cursor: grab;
+}

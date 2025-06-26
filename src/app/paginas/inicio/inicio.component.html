@@ -53,12 +53,17 @@
 <!--  //carrusel -->
 
 
-  <div class="card-container"> 
-  <div *ngFor="let categoria of categorias; let i = index" class="card">
-    <h2>{{categoria.nombre}}</h2>
-    <img [src]="categoria.img" alt="{{categoria.nombre}}" >
+<div class="slider-container">
+  <button class="nav prev" (click)="scrollLeft()">&#8249;</button>
+  <div class="card-track" #track>
+    <div *ngFor="let categoria of categorias" class="card">
+      <img [src]="categoria.img" alt="{{categoria.nombre}}">
+      <h2>{{categoria.nombre}}</h2>
+    </div>
   </div>
+  <button class="nav next" (click)="scrollRight()">&#8250;</button>
 </div>
+
 
   <!-- categorrias  -->
 

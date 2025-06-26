@@ -8,6 +8,21 @@
       </div>
     </div>
 
+    <!--imagen inicio-->
+
+
+    <div class="slider-container">
+  <button class="nav prev" (click)="scrollLeft()">&#8249;</button>
+  <div class="card-track" #track>
+    <div *ngFor="let tipo of tipos" class="card2">
+      <img [src]="tipo.img" alt="{{tipo.nombre}}">
+      <h2>{{tipo.nombre}}</h2>
+    </div>
+  </div>
+  <button class="nav next" (click)="scrollRight()">&#8250;</button>
+</div>
+<!-- card tipos-->
+
 <div class="card-container">
     <ng-container *ngIf="Productos && Productos.length">
         <ng-container *ngFor ="let producto of Productos">
@@ -21,3 +36,5 @@
         </ng-container>
     </ng-container>
 </div>
+
+<!--cards producto-->
