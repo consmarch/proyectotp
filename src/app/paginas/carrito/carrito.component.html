@@ -1,5 +1,5 @@
 <body>
-    <h1 class="text-center my-4">Carrito de Compras</h1>
+    <h1 class="text">Carrito de Compras</h1>
 
     <div *ngIf="productoEnCarrito.length === 0" class="alert alert-warning text-center">
         <p>No hay productos en el carrito </p>
@@ -9,7 +9,7 @@
         <table class="table table-hover table-bordered align-middle text-center">
             <thead>
                 <tr>
-                    <th>Imagen</th>
+                    <th >Imagen</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Precio</th>
@@ -44,7 +44,7 @@
         <div class="text-end mt-4" *ngIf="productoEnCarrito.length > 0">
             <h4 class=" fw-bold">Total : {{calcularTotal()}}</h4>
             <button class="btn btn-primary mt-2" (click)="irAFormularioCompra()">
-                <i class="bi bi-cart-check"></i> Realizar Compra
+                <i class="bi bi-cart-check"> Realizar Compra</i>
             </button>
         </div>
     </div>
