@@ -61,7 +61,7 @@ export class InicioComponent {
     }
   ]
 
-@ViewChild('track') trackRef!: ElementRef<HTMLDivElement>;
+    @ViewChild('track') trackRef!: ElementRef<HTMLDivElement>;
 
   ngAfterViewInit() {
     this.enableDragScroll(this.trackRef.nativeElement);
@@ -80,42 +80,7 @@ export class InicioComponent {
     let startX: number = 0;
     let scrollLeft: number = 0;
 
-    container.addEventListener('mousedown', (e) => {
-      isDown = true;
-      container.classList.add('active');
-      startX = e.pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
-    });
 
-    container.addEventListener('mouseleave', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
-
-    container.addEventListener('mouseup', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
-
-    container.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      container.scrollLeft = scrollLeft - walk;
-    });
-
-    container.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].pageX;
-      scrollLeft = container.scrollLeft;
-    });
-
-    container.addEventListener('touchmove', (e) => {
-      const x = e.touches[0].pageX;
-      const walk = (x - startX) * -1;
-      container.scrollLeft = scrollLeft + walk;
-    });
-  }
-
+}
 
 }

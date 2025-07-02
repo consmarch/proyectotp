@@ -15,101 +15,103 @@ export class ProductosComponent {
   Productos: Producto[] = [
     {
       id: 1,
-      nombre: 'Toppers Minions',
-      descripcion: 'Toppers de torta personalizado con nombre',
+      nombre: 'Toppers',
+      descripcion: 'Minions',
       precio: 2500,
       img: 'img/pro.png',
       disponibilidad: true,
     },
     {
       id: 2,
-      nombre: 'Cajitas Milk Boca',
-      descripcion: 'Cajitas Milk personalizadas con personaje y nombre',
+      nombre: 'Cajitas Milk ',
+      descripcion: 'Boca Juniors',
       precio: 10000,
       img: 'img/pro1.png',
       disponibilidad: true,
     },
     {
       id: 3,
-      nombre: 'Sobre de Golosinas Bluey',
-      descripcion: 'Personalizado con nombre',
+      nombre: 'Sobre de Golosinas',
+      descripcion: 'Bluey',
       precio: 3500,
       img: 'img/pro2.png',
       disponibilidad: true,
     },
     {
       id: 4,
-      nombre: 'Letras 3D Animalitos',
-      descripcion: 'Personalizadas de diseño',
+      nombre: 'Letras 3D',
+      descripcion: 'Animalitos',
       precio: 15000,
       img: 'img/pro3.png',
       disponibilidad: true,
     },
     {
       id: 5,
-      nombre: 'Toppers Princesas',
-      descripcion: 'Toppers cupcake',
+      nombre: 'Toppers',
+      descripcion: 'Princesas',
       precio: 2500,
       img: 'img/pro4.png',
       disponibilidad: true,
     },
     {
       id: 6,
-      nombre: 'Toppers Capibara',
-      descripcion: 'Toppers cupcake',
+      nombre: 'Toppers',
+      descripcion: 'Capibara',
       precio: 20000,
       img: 'img/pro5.png',
       disponibilidad: true,
     },
     {
       id: 7,
-      nombre: 'Toppers Princesas',
-      descripcion: 'Toppers Torta',
+      nombre: 'Toppers',
+      descripcion: 'Princesas',
       precio: 20000,
       img: 'img/pro6.png',
       disponibilidad: true,
     },
     {
       id: 8,
-      nombre: 'Libritos para colorear Princesas',
-      descripcion: 'Libritos personalizados',
+      nombre: 'Libritos para colorear ',
+      descripcion: 'Princesas',
       precio: 20000,
       img: 'img/pro7.png',
       disponibilidad: true,
     },
     {
       id: 9,
-      nombre: 'Libritos para colorear Capibara',
-      descripcion: 'Libritos personalizados',
+      nombre: 'Libritos para colorear ',
+      descripcion: 'Capibara',
       precio: 20000,
       img: 'img/pro8.png',
       disponibilidad: true,
     },
     {
       id: 10,
-      nombre: 'Alcancias Minions',
-      descripcion: 'Personalizadas con nombre y diseño',
+      nombre: 'Alcancias ',
+      descripcion: 'Minions',
       precio: 20000,
       img: 'img/pro9.png',
       disponibilidad: true,
     },
     {
       id: 11,
-      nombre: 'Cajitas Milk Capibara',
-      descripcion: 'Personalizadas con diseño y nombre',
+      nombre: 'Cajitas Milk ',
+      descripcion: 'Capibara',
       precio: 20000,
       img: 'img/pro10.png',
       disponibilidad: true,
     },
     {
       id: 12,
-      nombre: 'Cajitas Milk Dinosaurios',
-      descripcion: 'Personalizadas con diseño y nombre',
+      nombre: 'Cajitas Milk ',
+      descripcion: 'Dinosaurios',
       precio: 20000,
       img: 'img/pro11.png',
       disponibilidad: true,
     },
   ]
+
+  
   constructor(private carritoService: CarritoService) { }
 
   // Metodo para agreagr un producto al carrito
@@ -178,41 +180,6 @@ export class ProductosComponent {
     let startX: number = 0;
     let scrollLeft: number = 0;
 
-    container.addEventListener('mousedown', (e) => {
-      isDown = true;
-      container.classList.add('active');
-      startX = e.pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
-    });
 
-    container.addEventListener('mouseleave', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
-
-    container.addEventListener('mouseup', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
-
-    container.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      container.scrollLeft = scrollLeft - walk;
-    });
-
-    container.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].pageX;
-      scrollLeft = container.scrollLeft;
-    });
-
-    container.addEventListener('touchmove', (e) => {
-      const x = e.touches[0].pageX;
-      const walk = (x - startX) * -1;
-      container.scrollLeft = scrollLeft + walk;
-    });
-  }
-
+}
 }
