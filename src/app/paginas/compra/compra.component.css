@@ -1,3 +1,8 @@
+body{
+    background-color: rgb(250, 146, 203);
+    margin: 0%;
+}
+
 
 
 .container{
@@ -50,8 +55,4 @@ input,select{
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-h2{
-    margin-top: 25px;
 }

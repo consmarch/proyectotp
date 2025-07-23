@@ -1,0 +1,39 @@
+<div class="container py-4 text-center">
+  <div class="row justify-content-center">
+    <!-- Cuadrícula -->
+    <div class="col-md-6 mb-4">
+      <div class="d-flex flex-wrap border mx-auto">
+        <div *ngFor="let num of numbers"
+             class="border text-center"
+             [ngClass]="{'text-danger fw-bold': usedNumbers.includes(num)}"
+             style="width: 60px; height: 60px; line-height: 60px;">
+          {{ num }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Ruleta -->
+    <div class="col-md-6">
+      <div class="roulette-wrapper">
+        <div class="arrow-up"></div>
+        <div class="wheel" [style.transform]="'rotate(' + angle + 'deg)'">
+          <div *ngFor="let i of rouletteNumbers; let idx = index"
+               class="sector"
+               [style.transform]="'rotate(' + (idx * (360 / 90)) + 'deg)'"
+               [style.backgroundColor]="idx % 2 === 0 ? '#999999' : '#000000'">
+          </div>
+        </div>
+        <!-- Solo se muestra cuando finaliza el giro -->
+        <div *ngIf="showSelected" class="selected-number-overlay">
+          {{ selectedNumber }}
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="mt-4">
+        <button type="button" class="btn btn-primary btn-lg" (click)="spin()" [disabled]="spinning || rouletteNumbers.length === 0" style="width: 500px;" >
+            GIRAR
+        </button>
+
+      </div>
+    </div>
