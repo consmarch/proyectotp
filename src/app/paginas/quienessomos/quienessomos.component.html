@@ -1,22 +1,15 @@
-<div class="d-flex h-100">
-  <!-- Barra lateral -->
-  <div class="sidebar bg-pink d-flex flex-column align-items-center py-3">
-    <button mat-icon-button (click)="selectTool('shape')">
-      <img src="img/forma.png" alt="Formas" class="tool-icon">
-    </button>
-    <button mat-icon-button (click)="selectTool('text')">
-      <img src="img/texto.png" alt="Texto" class="tool-icon">
-    </button>
-    <button mat-icon-button (click)="selectTool('brush')">
-      <img src="img/pincel.png" alt="Pincel" class="tool-icon">
-    </button>
-    <button mat-icon-button (click)="selectTool('image')">
-      <img src="img/subir.png" alt="Imagen" class="tool-icon">
-    </button>
-  </div>
+<div class="p-5 text-center bg-body-tertiary rounded-3">
 
-  <!-- Lienzo -->
-  <div class="canvas-area flex-grow-1 p-2">
-    <canvas #canvas width="800" height="500" class="border w-100 h-100"></canvas>
+  <img src="img/cet30.png" alt="cet30" width="200" height="200" aria-hidden="true">
+  <h1 class="text-body-emphasis">Estudiantes CET n° 30</h1>
+  <p class="col-lg-8 mx-auto fs-5 text-muted">
+    6to 4ta, Creacion de pagina WEB en taller Programacion II
+  </p>
+  <div class="d-inline-flex gap-2 mb-5"> <button
+      class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+      Ver creaciones <svg class="bi ms-2" width="24" height="24" aria-hidden="true">
+        <use xlink:href="#arrow-right-short"></use>
+      </svg>
+    </button>
   </div>
 </div>
