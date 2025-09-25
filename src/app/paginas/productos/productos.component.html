@@ -21,7 +21,7 @@
     </div>
 
     <div class="col md-3">
-      <label>Nombre</label>
+      <label>Tipo</label>
       <select class="form-select" [(ngModel)]="selectedBrand" name="nombre">
         <option value="">Todas</option>
         <option *ngFor="let nombre of nombre" [value]="nombre">{{ nombre }}</option>
@@ -44,9 +44,6 @@
       </button>
     </div>
   </div>
-
-
-
 
   <div class="card-container">
     <ng-container *ngIf="filteredProducts && filteredProducts.length">

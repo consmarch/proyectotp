@@ -1,32 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
-import { CarritoComponent } from '../../paginas/carrito/carrito.component';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { CarritoService } from '../../servicios/carrito.service';
-import { ProductosComponent } from '../../paginas/productos/productos.component';
 import { Producto } from '../../modelos/producto.model';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [RouterLink, NgIf, FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
-    cantidadProductos: number = 0;
+export class NavbarComponent implements OnInit {
 
-    constructor(private carritoService: CarritoService){}
+  terminoBusqueda: string = '';
+  cantidadProductos: number = 0;
 
-    ngOnInit(): void {
-      //*escucha los cambios en el carrito paraa actualizar la cantidad total de productos*//
-      this.carritoService.carrito$.subscribe((productos: { producto: Producto,cantidad : number}[]) =>{
+  constructor(
+    private carritoService: CarritoService,
+    private router: Router
+  ) {}
 
-        this.cantidadProductos = productos.reduce((total, item) => total + item.cantidad,0)//*suma la cantidad de productos
+  ngOnInit(): void {
+    this.carritoService.carrito$.subscribe((productos: { producto: Producto, cantidad: number }[]) => {
+      this.cantidadProductos = productos.reduce((total, item) => total + item.cantidad, 0);
+    });
+  }
 
-      })
+  buscar() {
+    if (this.terminoBusqueda.trim()) {
+      this.router.navigate(['/productos'], { queryParams: { q: this.terminoBusqueda } });
+      console.log('Buscando:', this.terminoBusqueda);
     }
-
-    onCarritoClick(){
-      console.log('Carrito clicked');
-    }
-
+  }
 }

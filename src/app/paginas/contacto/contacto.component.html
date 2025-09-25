@@ -1,31 +1,62 @@
-<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="img/icon3.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div>
-          <h6 class="mb-0">Creadora</h6>
-          <p class="mb-0 opacity-75">March Constanza</p>
-        </div> 
-      </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="img/icon1.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div>
-          <h6 class="mb-0">Whatsapp</h6>
-          <p class="mb-0 opacity-75"> +54 299 512 5390</p>
+<body>
+
+<h2 class="text-center mb-4">Formulario de Contacto</h2>
+
+<form [formGroup]="formularioContacto" (ngSubmit)="enviarContacto()" class="mx-auto" style="max-width: 600px">
+    <!--Campos del formulario-->
+    <div class="row g-3 mb-3">
+        <div class="col-md-6">
+            <label for="nombre" class="form-label fw-semibold">Nombre <span class="text-danger">*</span></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input id="nombre" formControlName="nombre" class="form-control" placeholder="Tu nombre completo" />
+            </div>
+            <div *ngIf="formularioContacto.get('nombre')?.touched && formularioContacto.get('nombre')?.invalid"
+                class="form-text text-danger">
+                El nombre es obligatorio
+            </div>
         </div>
-      </div>
-    </a>
-    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="img/icon2.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div>
-          <h6 class="mb-0">Gmail</h6>
-          <p class="mb-0 opacity-75">cons.march13gmail.com</p>
+
+        <div class="col-md-6">
+            <label for="telefono" class="form-label fw-semibold">Teléfono<span class="text-danger">*</span></label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                <input id="telefono" formControlName="telefono" class="form-control"
+                    placeholder="Ej: +54 9 11 1234 5678" />
+            </div>
+            <div *ngIf="formularioContacto.get('telefono')?.touched && formularioContacto.get('telefono')?.invalid"
+                class="form-text text-danger">
+                El teléfono es obligatorio
+            </div>
         </div>
-      </div>
-    </a>
-  </div>
-</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="correo" class="form-label fw-semibold">Correo <span class="text-danger">*</span></label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+            <input id="correo" formControlName="correo" type="email" class="form-control"
+                placeholder="ejemplo@correo.com" />
+        </div>
+        <div *ngIf="formularioContacto.get('correo')?.touched && formularioContacto.get('correo')?.invalid"
+            class="form-text text-danger">
+            Ingrese un correo válido
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="mensaje" class="form-label fw-semibold">Mensaje <span class="text-danger">*</span></label>
+        <textarea id="mensaje" formControlName="mensaje" rows="5" class="form-control"
+            placeholder="Escribe tu consulta o mensaje aquí"></textarea>
+        <div *ngIf="formularioContacto.get('mensaje')?.touched && formularioContacto.get('mensaje')?.invalid"
+            class="form-text text-danger">
+            El mensaje es obligatorio
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end my-4">
+        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+    </div>
+</form>
+
+</body>
