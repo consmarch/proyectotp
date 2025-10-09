@@ -85,3 +85,38 @@ li{
   font-size: 15px;
   padding: 5px 12px;
 }
+
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: rgb(150, 12, 143); /* fondo oscuro como la imagen */
+  border-radius: 8px;
+  padding: 4px 8px;
+  width: 250px;
+}
+
+.search-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.search-form input::placeholder {
+  color: #ffffff;
+}
+
+.search-form button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-form button:hover {
+  color: white;
+}

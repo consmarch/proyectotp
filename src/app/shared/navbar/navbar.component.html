@@ -33,17 +33,25 @@
       </ul>
 
 
-      <!-- Navbar form -->
+      <!-- Navbar form
       <form class="d-flex search-form mx-auto" role="search" (ngSubmit)="buscar()">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
           [(ngModel)]="terminoBusqueda" name="busqueda">
         <button type="submit" class="btn btn-outline-primary">Buscar</button>
+      </form>-->
+
+
+      <form class="search-form" role="search" (ngSubmit)="buscar()">
+        <input type="search" placeholder="Buscar..." aria-label="Buscar" [(ngModel)]="terminoBusqueda"
+          name="busqueda" />
+        <button type="submit">
+          <i class="fas fa-search"></i>
+        </button>
       </form>
 
 
-
-        <button type="submit" class="btn btn-outline-primary"  routerLink="/isesion">Iniciar Sesion</button>
-        <button type="submit" class="btn btn-outline-primary"  routerLink="/registrar">Registrar</button>
+      <button type="submit" class="btn btn-outline-primary" routerLink="/isesion">Iniciar Sesion</button>
+      <button type="submit" class="btn btn-outline-primary" routerLink="/registrar">Registrar</button>
 
 
       <!-- Carrito -->
@@ -59,3 +67,10 @@
     </div>
   </div>
 </nav>
+
+
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
