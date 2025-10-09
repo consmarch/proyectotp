@@ -55,3 +55,33 @@ img {
 li{
   font-size: 18px;
 }
+
+/* 🔹 Centrar la barra de búsqueda en el medio del navbar */
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.search-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%; /* antes era 40%, ahora más chico */
+  justify-content: center;
+}
+
+.search-form input {
+  flex: 1;
+  height: 36px; /* un poco más compacta */
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+.search-form button {
+  white-space: nowrap;
+  font-size: 15px;
+  padding: 5px 12px;
+}

@@ -34,11 +34,16 @@
 
 
       <!-- Navbar form -->
-      <form class="d-flex" role="search" (ngSubmit)="buscar()">
+      <form class="d-flex search-form mx-auto" role="search" (ngSubmit)="buscar()">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
           [(ngModel)]="terminoBusqueda" name="busqueda">
         <button type="submit" class="btn btn-outline-primary">Buscar</button>
       </form>
+
+
+
+        <button type="submit" class="btn btn-outline-primary"  routerLink="/isesion">Iniciar Sesion</button>
+        <button type="submit" class="btn btn-outline-primary"  routerLink="/registrar">Registrar</button>
 
 
       <!-- Carrito -->
