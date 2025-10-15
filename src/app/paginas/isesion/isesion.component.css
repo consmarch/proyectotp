@@ -5,17 +5,23 @@
     font-family: Arial, sans-serif;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
+body {
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+  height: 100vh;
+  margin: 0;
 }
-
 
 .container {
-    display: flex;
-    height: 100vh;
-    position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
 
 .left {
     flex: 1;
@@ -23,14 +29,15 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible; /* Permite que la imagen se salga */
+    overflow: visible;
     position: relative;
+    width: 120%;
 }
 
 .left img {
-  
     width: 200%;
-    height: 110%;
+    height: 100%;
+    object-fit: cover;
     z-index: 500;
 }
 
@@ -38,23 +45,27 @@ html, body {
     flex: 1;
     background-color: #f9f9fb;
     display: flex;
-    justify-content: center;   /* Centra horizontalmente */
-    align-items: center;       /* Centra verticalmente */
+    justify-content: center;   
+    align-items: center;     
     position: relative;
-    z-index: 1;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    height: 100vh;             /* Asegura que use toda la altura visible */
+    padding: 0px;            
 }
 
-
 .login-form {
-    width: 80%;
+    width: 100%;
     max-width: 350px;
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
+    margin-left: 150px;
 }
 
 .login-form h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: #333;
 }
 
 .login-form label {
@@ -62,6 +73,7 @@ html, body {
     text-align: left;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #444;
 }
 
 .login-form input {
@@ -81,6 +93,7 @@ html, body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.3s ease;
 }
 
 .login-form button:hover {
@@ -89,10 +102,12 @@ html, body {
 
 .login-form a {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     color: #a84ca0;
     text-decoration: none;
     font-size: 0.9rem;
 }
 
-
+.login-form a:hover {
+    text-decoration: underline;
+}
