@@ -1,35 +1,31 @@
 import { Injectable } from '@angular/core';
-
-// Importa CanActivate (interfaz usada para proteger rutas) y Router (para redireccionar)
 import { CanActivate, Router } from '@angular/router';
-
-// Importa el servicio de autenticación que contiene la lógica para verificar roles de usuario
 import { AuthService } from '../servicios/auth.service';
 
-// Declara la clase como inyectable y disponible en toda la aplicación
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate {
 
-  // Inyección de dependencias:
-  // - AuthService: para comprobar si el usuario tiene rol de administrador
-  // - Router: para redirigir al usuario si no tiene permiso
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    // Servicio de autenticación para verificar token, usuario y rol.
+    private authService: AuthService,
 
-  // Método obligatorio de la interfaz CanActivate, que decide si se puede acceder a una ruta
+    // Router para redirigir si el usuario no tiene permisos.
+    private router: Router
+  ) {}
+
+  // Método que Angular ejecuta antes de permitir el acceso a una ruta protegida.
   canActivate(): boolean {
-    // Verifica si el usuario es administrador mediante el método del servicio de autenticación
-    if (this.authService.esAdmin()) {
-      // Si el usuario tiene rol de administrador, se permite el acceso
-      return true;
-    } else {
-      // Si no es administrador, muestra un mensaje de alerta
-      alert('Acceso denegado. Solo administradores pueden entrar aquí.');
 
-      // Redirige al usuario a la página de inicio
-      this.router.navigate(['/inicio']);
-
-      // Devuelve false para bloquear el acceso a la ruta
-      return false;
+    // Verifica primero si el usuario tiene sesión activa
+    // y luego si su rol es 'admin'.
+    if (this.authService.isLoggedIn() && this.authService.esAdmin()) {
+      return true; // Permite el acceso a la ruta.
     }
+
+    // Si no está logueado o no es admin,
+    // lo redirige a la pantalla de inicio de sesión.
+    this.router.navigate(['/inicio-sesion']);
+
+    return false; // Bloquea el acceso a la ruta protegida.
   }
 }

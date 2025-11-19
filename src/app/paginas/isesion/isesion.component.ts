@@ -2,7 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../servicios/auth.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-isesion',
@@ -13,69 +13,55 @@ import { Router } from 'express';
 })
 export class IsesionComponent {
 
-  //datos capturados desde el formulario de login
-  usuario = {email: '',password:''};
+  // Objeto que almacena las credenciales que el usuario ingresará en el formulario.
+  // Se enlaza con ngModel en la plantilla.
+  usuario = {
+    email: '',
+    password: ''
+  };
 
-  //variables para mostrar mensajes de error y estado de cargo
-  error: string | null = null;
-
-  cargando = false;
+  // Variable para mostrar mensajes de error en la vista.
+  error: string = '';
 
   constructor(
+    // Servicio encargado de manejar autenticación y comunicación con el backend.
     private authService: AuthService,
+
+    // Router para redireccionar luego de iniciar sesión.
     private router: Router
-  ){}
+  ) {}
 
-  //envia las credenciales al backend e inicia la sesion si son validas
+  // Método llamado al enviar el formulario de inicio de sesión.
+  iniciarSesion(): void {
 
-  iniciaSesion(){
-    this.error = null;
-    this.cargando = true;
+    // Validación básica: ambos campos deben estar completos.
+    if (!this.usuario.email || !this.usuario.password) {
+      this.error = 'Por favor ingrese sus credenciales.';
+      return;
+    }
 
+    // Llama al servicio de autenticación y espera la respuesta del backend.
     this.authService.login(this.usuario).subscribe({
 
-      //se ejecuta cuando el servidor devuelve una respuesta exitosa
-      next: (response:any)=>{
-          //el backend debe devolver: id, nombre, email, rol y token
-          if(response?.token &&response?.rol){
-            //guarda token y rol en localstorage
-            this.authService.guardarSesion(response.token, response.rol)
+      // Si la petición es exitosa:
+      next: (res) => {
+        // Limpiamos posibles errores previos.
+        this.error = '';
 
-            //guarda tambien los datos completos del usuario
-            localStorage.setItem('usuario', JSON.stringify(response));
+        // Aviso rápido para el usuario (puede reemplazarse por un toast).
+        alert('Inicio de sesión exitoso');
 
-            //redirige segun el rol devuelto por el backend
-            this.router.navigate ([
-              response.rol === 'admin' ? '/admin' : '/inicio'
-            ])
-          }
-          //si el backend devuelve un mensaje de errrpr controlado
-
-          else if(response?.mensaje){
-            this.error = response.mensaje
-          }
-          //si la respuesta no tiene formato esperado
-
-        else{
-          this.error = 'respuesta inesperada del servidor'
-        }
-        this.cargando = false
+        // Redirige a la página de productos.
+        this.router.navigate(['/productos']);
       },
 
-      //se ejecuta cuando ocurre un error en la comunicacion con el backend
-      error:(err:any) =>{
-        console.error('erro al iniciar sesion:', {
-          status: err.status,
-          statusText: err.statusText,
-          error: err.error,
-          url: err.url
-        });
+      // Si ocurre un error (credenciales incorrectas o fallo del servidor):
+      error: (err) => {
+        console.error('Error al iniciar sesión', err);
 
-        //se muestra  el mensaje devuelto por el backend si existe
-        this.error = err.error?.mensaje || 'credencuales incorrecta o error en el servidos'
-
-        this.cargando = false;
+        // Mensaje destinado a mostrarse en la interfaz.
+        this.error = 'Credenciales incorrectas o error en el servidor.';
       }
-    })
+    });
   }
 }
