@@ -8,6 +8,7 @@ import { CompraComponent } from './paginas/compra/compra.component';
 import { DibujaComponent } from './paginas/dibuja/dibuja.component';
 import { IsesionComponent } from './paginas/isesion/isesion.component';
 import { RegistrarComponent } from './paginas/registrar/registrar.component';
+import { AdminComponent } from './paginas/admin/admin.component';
 
 export const routes: Routes = [
 
@@ -21,6 +22,6 @@ export const routes: Routes = [
 {path: 'compra' , component:CompraComponent},
 {path: 'dibuja', component: DibujaComponent},
 {path: 'isesion', component: IsesionComponent},
-{path: 'registrar', component: RegistrarComponent}
-
+{path: 'registrar', component: RegistrarComponent},
+{path: 'admin', component: AdminComponent},
 ];

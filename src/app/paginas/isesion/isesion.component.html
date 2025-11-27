@@ -7,14 +7,32 @@
             <div class="login-form">
                 <h2>¡Iniciar sesión!</h2>
 
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" placeholder="Correo electrónico*" required>
+                <form (ngSubmit)="iniciarSesion()">
 
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Contraseña*" required>
+                    <!-- Correo electrónico -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="usuario.email"
+                            required />
+                    </div>
 
-                <button>Ingresar</button>
+                    <!-- Contraseña -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            [(ngModel)]="usuario.password" required />
+                    </div>
 
+                    <!-- Botón de envío -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </div>
+
+                    <!-- Mensaje de error -->
+                    <p *ngIf="error" class="text-danger text-center mt-3">
+                        {{ error }}
+                    </p>
+                </form>
                 <a href="#">¿Olvidaste tu contraseña?</a>
                 <a href="#">Crear una cuenta</a>
             </div>
